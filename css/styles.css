@@ -1039,6 +1039,32 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   .gallery__grid { grid-template-columns: 1fr; }
   .gcard--wide img { aspect-ratio: 16 / 10; }
 }
+/* on hover-capable devices the caption slides up on hover for a cleaner card;
+   touch devices keep it always visible (no hover) */
+@media (hover: hover) {
+  .gcard figcaption {
+    transform: translateY(10px);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .gcard:hover figcaption { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- designed section seams (gold hairline that fades at the edges,
+   replaces the flat gray 1px border between the dark content sections) ---------- */
+.stats, .project, .lifestyle, .contact { position: relative; border-top: none; }
+.stats::before, .project::before, .lifestyle::before, .contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(86%, var(--maxw));
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent,
+              rgba(217,200,168,0.32) 22%, rgba(217,200,168,0.5) 50%, rgba(217,200,168,0.32) 78%, transparent);
+}
 
 /* gallery images are clickable - signal it */
 .gcard { cursor: zoom-in; }
