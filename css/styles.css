@@ -19,6 +19,7 @@
 
   --display: "Rubik", system-ui, sans-serif;
   --script:  "Rubik", system-ui, sans-serif;
+  --serif:   "Frank Ruhl Libre", Georgia, serif;   /* Hebrew-capable luxury serif for headings */
   --body:    "Heebo", system-ui, sans-serif;
 
   --maxw: 1180px;
@@ -27,6 +28,20 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- cinematic overlays (grain + vignette), tie the page to the film ---------- */
+.grain, .vignette { position: fixed; inset: 0; pointer-events: none; }
+.vignette {
+  z-index: 90;
+  background: radial-gradient(125% 105% at 50% 45%, transparent 55%, rgba(4,6,10,0.5) 100%);
+}
+.grain {
+  z-index: 91;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
 
 html {
   scroll-behavior: smooth;
@@ -567,10 +582,11 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 /* ---------- shared sections ---------- */
 .section-head { max-width: var(--maxw); margin: 0 auto 3.2rem; text-align: center; }
 .section-title {
-  font-family: var(--display);
+  font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(2.1rem, 5.4vw, 3.8rem);
-  line-height: 1.12;
+  font-size: clamp(2.2rem, 5.6vw, 3.9rem);
+  line-height: 1.14;
+  letter-spacing: 0.005em;
   text-wrap: balance;
 }
 .section-sub { color: var(--ink-dim); margin-top: 0.8rem; }
@@ -615,9 +631,9 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 }
 .stat__num {
   display: block;
-  font-family: var(--display);
+  font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-size: clamp(2.7rem, 5.2vw, 4.2rem);
   line-height: 1;
   color: var(--gold-2);
   transform: translateZ(30px);
@@ -672,7 +688,7 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   font-weight: 500;
   margin-bottom: 0.4rem;
 }
-.credit p { font-family: var(--display); font-size: 1.35rem; font-weight: 500; }
+.credit p { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; }
 .credit span { display: block; margin-top: 0.4rem; color: var(--ink-faint); font-size: 0.88rem; line-height: 1.6; }
 
 /* ---------- lifestyle (3D tilt image cards) ---------- */
@@ -1006,6 +1022,7 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   object-fit: cover;
   transition: transform 0.8s var(--ease);
 }
+.gcard--wide { grid-column: 1 / -1; }
 .gcard--wide img { aspect-ratio: 21 / 9; }
 .gcard:hover img { transform: scale(1.05); }
 .gcard figcaption {
@@ -1021,6 +1038,114 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 @media (max-width: 820px) {
   .gallery__grid { grid-template-columns: 1fr; }
   .gcard--wide img { aspect-ratio: 16 / 10; }
+}
+
+/* gallery images are clickable - signal it */
+.gcard { cursor: zoom-in; }
+
+/* ---------- lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(6, 8, 12, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
+}
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox__stage {
+  position: relative;
+  max-width: 1180px;
+  max-height: 88vh;
+  transform: scale(0.96);
+  transition: transform 0.4s var(--ease);
+}
+.lightbox.is-open .lightbox__stage { transform: scale(1); }
+.lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+}
+.lightbox__cap {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.98rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+}
+.lightbox__close {
+  position: absolute;
+  top: clamp(10px, 3vw, 26px);
+  inset-inline-end: clamp(10px, 3vw, 30px);
+  width: 46px; height: 46px;
+  border: 1px solid var(--ink-faint);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: var(--ink);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.lightbox__close:hover { border-color: var(--ink); background: rgba(255,255,255,0.12); transform: rotate(90deg); }
+
+/* ---------- cinematic full-bleed break (rooftop pool at sunset) ---------- */
+.break {
+  position: relative;
+  min-height: clamp(440px, 74vh, 780px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+.break__media {
+  position: absolute;
+  inset: 0;
+  background: url("../media/render1.jpg") center/cover no-repeat;
+  background-attachment: fixed;   /* parallax on desktop */
+  transform: scale(1.03);
+}
+.break::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,8,12,0.6) 0%, rgba(6,8,12,0.22) 42%, rgba(6,8,12,0.8) 100%);
+}
+.break__overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 900px;
+}
+.break__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5.6vw, 4.2rem);
+  line-height: 1.1;
+  margin-top: 0.5rem;
+  text-wrap: balance;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.5);
+}
+.break__sub {
+  margin-top: 1rem;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  color: var(--gold-2);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+}
+/* background-attachment: fixed is unreliable on touch - fall back to a static cover */
+@media (hover: none), (max-width: 820px) {
+  .break__media { background-attachment: scroll; }
+  .break { min-height: clamp(380px, 60vh, 560px); }
 }
 
 /* textual stat cards (address / architect) */

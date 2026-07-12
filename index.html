@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Playfair+Display:wght@500;600&family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Frank+Ruhl+Libre:wght@500;700&family=Playfair+Display:wght@500;600&family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="preload" as="image" href="media/poster.jpg" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -43,6 +43,10 @@
 <body id="top">
 
   <a class="skip-link" href="#stats">דלג לתוכן</a>
+
+  <!-- cinematic overlays: subtle film grain + edge vignette tie the whole page to the film -->
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- Cinematic preloader -->
   <div class="loader" id="loader" aria-hidden="true">
@@ -277,10 +281,16 @@
           <img src="media/render4.jpg" alt="תקריב חזית הסריג האורגני עם מרפסות מוארות" loading="lazy" width="1600" height="900" />
           <figcaption>הפסאדה · יסקי אדריכלים</figcaption>
         </figure>
-        <figure class="gcard gcard--wide tilt reveal-item">
-          <img src="media/render1.jpg" alt="בריכת הגג בשעת שקיעה מול קו הרקיע של תל אביב" loading="lazy" width="1600" height="900" />
-          <figcaption>בריכת הגג · שקיעה מעל תל אביב</figcaption>
-        </figure>
+      </div>
+    </section>
+
+    <!-- CINEMATIC BREAK - full-bleed rooftop pool at sunset (a breath between the gallery and the CTA) -->
+    <section class="break" aria-label="בריכת הגג בשקיעה">
+      <div class="break__media" role="img" aria-label="בריכת הגג של PEOPLE מול קו הרקיע של תל אביב בשעת שקיעה"></div>
+      <div class="break__overlay reveal-item">
+        <p class="eyebrow">בריכת הגג</p>
+        <h2 class="break__title">היום מסתיים מעל תל אביב</h2>
+        <p class="break__sub">בלב העיר, מעל הכול</p>
       </div>
     </section>
 
@@ -353,6 +363,15 @@
     </footer>
 
   </main>
+
+  <!-- Lightbox: click a gallery render to view it full-screen -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="תצוגת תמונה מוגדלת">
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="סגירה">&times;</button>
+    <figure class="lightbox__stage">
+      <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+      <figcaption class="lightbox__cap" id="lightboxCap"></figcaption>
+    </figure>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

@@ -264,4 +264,42 @@
       leadNote.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
+
+  /* ---------- gallery lightbox (click a render to view it full-screen) ---------- */
+  var lb      = document.getElementById("lightbox");
+  var lbImg   = document.getElementById("lightboxImg");
+  var lbCap   = document.getElementById("lightboxCap");
+  var lbClose = document.getElementById("lightboxClose");
+  if (lb && lbImg) {
+    var lastFocus = null;
+    function openLightbox(src, alt, cap) {
+      lastFocus = document.activeElement;
+      lbImg.setAttribute("src", src);
+      lbImg.setAttribute("alt", alt || "");
+      lbCap.textContent = cap || "";
+      lb.classList.add("is-open");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      lbClose.focus();
+    }
+    function closeLightbox() {
+      lb.classList.remove("is-open");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    Array.prototype.forEach.call(document.querySelectorAll("#gallery .gcard"), function (card) {
+      var img = card.querySelector("img");
+      var capEl = card.querySelector("figcaption");
+      if (!img) return;
+      card.addEventListener("click", function () {
+        openLightbox(img.getAttribute("src"), img.getAttribute("alt"), capEl ? capEl.textContent : "");
+      });
+    });
+    lbClose.addEventListener("click", closeLightbox);
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target === lbImg.parentNode) closeLightbox(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lb.classList.contains("is-open")) closeLightbox();
+    });
+  }
 })();
