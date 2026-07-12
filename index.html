@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--
+  PEOPLE Tel Aviv - concept demo landing page.
+  Built by ISRU - Itzik Uziel. NOT an official Israel Canada site.
+  All copy is quoted 1:1 from the public project page at israel-canada.co.il;
+  the gallery shows the project's own published renders; the scroll film is an
+  AI-generated cinematic interpretation for concept demonstration only.
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEOPLE תל אביב - מתחם קרמניצקי | הדמיית קונספט מאת ISRU</title>
+  <meta name="description" content="פרויקט People תל אביב - מתחם קרמניצקי, שכונת ביצרון. 302 דירות יוקרה, משרדים ומסחר תחת קורת גג אחת. הדמיית קונספט אינטראקטיבית מאת ISRU - איציק עוזיאל." />
+  <meta name="theme-color" content="#0c0f14" />
+  <meta name="robots" content="noindex" />
+
+  <meta property="og:title" content="PEOPLE תל אביב - מתחם קרמניצקי | קונספט מאת ISRU" />
+  <meta property="og:description" content="יום אחד ב-PEOPLE: חוויית סקרול קולנועית מהשמיים של תל אביב עד בריכת הגג בשקיעה. הדמיית קונספט מאת ISRU." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://isru-digital.github.io/people-tlv/media/poster.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230c0f14'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%23d9c8a8' font-family='Arial,sans-serif' font-weight='700'%3EP%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="media/poster.jpg" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "PEOPLE תל אביב - הדמיית קונספט",
+    "description": "הדמיית קונספט אינטראקטיבית לפרויקט People תל אביב במתחם קרמניצקי. נבנתה ע\"י ISRU - איציק עוזיאל. אינה האתר הרשמי של ישראל קנדה.",
+    "creator": { "@type": "Person", "name": "Itzik Uziel", "affiliation": "ISRU" }
+  }
+  </script>
+</head>
+<body id="top">
+
+  <a class="skip-link" href="#stats">דלג לתוכן</a>
+
+  <!-- Cinematic preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__brand">PEOPLE</span>
+      <span class="loader__sub">מתחם קרמניצקי · תל אביב</span>
+      <span class="loader__line"></span>
+      <span class="loader__credit">הדמיית קונספט מאת ISRU</span>
+    </div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- Concept ribbon -->
+  <a class="concept-ribbon" href="#isru" data-link>
+    <span class="concept-ribbon__tag">אתר קונספט</span>
+    <span class="concept-ribbon__by">נבנה ע"י ISRU - איציק עוזיאל</span>
+  </a>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__brand-main">PEOPLE</span>
+      <span class="nav__brand-sub">מתחם קרמניצקי · תל אביב</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="ניווט ראשי">
+      <a href="#project" data-link>הפרויקט</a>
+      <a href="#gallery" data-link>גלריה</a>
+      <a href="#contact" data-link>צור קשר</a>
+      <a href="#contact" class="btn btn--book" data-link>מתעניינים?</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="פתח תפריט" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- SCENE DOTS -->
+  <nav class="dots" id="dots" aria-label="ניווט סצנות">
+    <a href="#film" data-scene="0" aria-label="סצנה 1 - שמיים"></a>
+    <a href="#film" data-scene="1" aria-label="סצנה 2 - הרחוב"></a>
+    <a href="#film" data-scene="2" aria-label="סצנה 3 - הלובי"></a>
+    <a href="#film" data-scene="3" aria-label="סצנה 4 - המשרדים"></a>
+    <a href="#film" data-scene="4" aria-label="סצנה 5 - חדר הכושר"></a>
+    <a href="#film" data-scene="5" aria-label="סצנה 6 - הדירות"></a>
+    <a href="#film" data-scene="6" aria-label="סצנה 7 - המרפסת"></a>
+    <a href="#film" data-scene="7" aria-label="סצנה 8 - בריכת הגג"></a>
+    <a href="#film" data-scene="8" aria-label="סצנה 9 - מתעניינים"></a>
+  </nav>
+
+  <main>
+
+    <!-- THE FILM - a day at PEOPLE, from morning sky to sunset pool -->
+    <section class="film" id="film">
+      <div class="film__stage">
+        <video class="film__video" id="filmVideo" muted playsinline preload="auto"
+               data-src="media/film.mp4" data-src-m="media/film_m.mp4"
+               poster="media/poster.jpg"></video>
+        <div class="film__scrim"></div>
+
+        <div class="caps">
+          <!-- 1 - the sky -->
+          <div class="cap cap--center is-active" data-scene="0">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">ישראל קנדה</p>
+              <h1 class="hero__title">PEOPLE</h1>
+              <p class="hero__script">מתחם קרמניצקי · שכונת ביצרון · תל אביב</p>
+              <p class="hero__tagline">חוויית חיים חדשה בלב תל אביב</p>
+              <a class="btn btn--book" href="#contact" data-link>מתעניינים?</a>
+            </div></div>
+          </div>
+          <!-- 2 - the street -->
+          <div class="cap cap--right" data-scene="1">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">הרחוב</p>
+              <h2 class="scene__title">מחוברים לקצב הדינמי של העיר</h2>
+              <p class="scene__body">שטחי מסחר ותעסוקה תחת קורת גג אחת - סביבת חיים שלמה ומגוונת.</p>
+            </div></div>
+          </div>
+          <!-- 3 - the lobby -->
+          <div class="cap cap--left" data-scene="2">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">הלובי</p>
+              <h2 class="scene__title">פרשנות מודרנית לחזון העירוני</h2>
+              <p class="scene__body">פרויקט פורץ דרך במתחם קרמניצקי, מבית ישראל קנדה.</p>
+            </div></div>
+          </div>
+          <!-- 4 - the offices -->
+          <div class="cap cap--right" data-scene="3">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">המשרדים</p>
+              <h2 class="scene__title">חיים, עבודה ופנאי</h2>
+              <p class="scene__body">משרדים למכירה במרחק הליכה מהכול - העבודה עוברת לגור לידך.</p>
+            </div></div>
+          </div>
+          <!-- 5 - the gym -->
+          <div class="cap cap--left" data-scene="4">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">חדר הכושר</p>
+              <h2 class="scene__title">אנרגטית, פתוחה, קהילתית</h2>
+              <p class="scene__body">כך נראית תל אביב החדשה - בדיוק כמו שישראל קנדה מאמינה שצריך לחיות בעיר.</p>
+            </div></div>
+          </div>
+          <!-- 6 - the apartment -->
+          <div class="cap cap--right" data-scene="5">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">הדירות</p>
+              <h2 class="scene__title">302 דירות יוקרה</h2>
+              <p class="scene__body">אדריכלות: יסקי אדריכלים - קרימינצקי 7, תל אביב.</p>
+            </div></div>
+          </div>
+          <!-- 7 - the balcony -->
+          <div class="cap cap--left" data-scene="6">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">המרפסת</p>
+              <h2 class="scene__title">הרבה יותר מרק מגדל</h2>
+              <p class="scene__body">הפרויקט הוא תפיסת עולם: חיבור בין חיים, עבודה ופנאי.</p>
+            </div></div>
+          </div>
+          <!-- 8 - the rooftop pool -->
+          <div class="cap cap--right" data-scene="7">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">בריכת הגג</p>
+              <h2 class="scene__title">חוויית חיים חדשה</h2>
+              <p class="scene__body">היום מסתיים מעל תל אביב - בלב העיר, מעל הכול.</p>
+            </div></div>
+          </div>
+          <!-- 9 - CTA -->
+          <div class="cap cap--center cap--cta" data-scene="8">
+            <div class="cap__inner"><div class="cap__text">
+              <p class="eyebrow">מתעניינים?</p>
+              <h2 class="scene__title scene__title--xl">PEOPLE</h2>
+              <p class="hero__tagline">השאירו פרטים כאן ונחזור אליכם</p>
+              <div class="cta__actions">
+                <a class="btn btn--book btn--lg" href="tel:*9098">9098* מוקד</a>
+                <a class="btn btn--ghost btn--lg" href="#contact" data-link>לפרטים נוספים</a>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <a class="scroll-cue" id="scrollCue" href="#stats" aria-label="גלול למטה">
+          <span class="scroll-cue__label">גלול למטה</span>
+          <span class="scroll-cue__line"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- OFFICIAL NUMBERS -->
+    <section class="stats" id="stats">
+      <div class="section-head">
+        <p class="eyebrow">המספרים</p>
+        <h2 class="section-title">הפרויקט במבט אחד</h2>
+      </div>
+      <div class="stats__grid">
+        <article class="stat tilt reveal-item">
+          <span class="stat__num" data-count="302">0</span>
+          <span class="stat__label">יחידות דיור</span>
+        </article>
+        <article class="stat tilt reveal-item">
+          <span class="stat__num" data-count="1">0</span>
+          <span class="stat__label">בניין אחד, עולם שלם</span>
+        </article>
+        <article class="stat tilt reveal-item">
+          <span class="stat__num stat__num--text">קרימינצקי 7</span>
+          <span class="stat__label">תל אביב · שכונת ביצרון</span>
+        </article>
+        <article class="stat tilt reveal-item">
+          <span class="stat__num stat__num--text">יסקי אדריכלים</span>
+          <span class="stat__label">אדריכלות</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- THE PROJECT - their exact copy -->
+    <section class="project" id="project">
+      <div class="project__inner">
+        <div class="project__text">
+          <p class="eyebrow">פרויקט People תל אביב</p>
+          <h2 class="section-title">חוויית חיים חדשה מבית ישראל קנדה</h2>
+          <p class="project__lead">בפרויקט People בלב תל אביב, צומחת חוויית חיים חדשה מבית ישראל קנדה - פרויקט פורץ דרך במתחם קרמניצקי המעניק פרשנות מודרנית לחזון העירוני החדשני.</p>
+          <p class="project__body">המתחם משלב בתוכו דירות יוקרה, משרדים למכירה ושטחי מסחר ותעסוקה תחת קורת גג אחת, במטרה ליצור סביבת חיים שלמה ומגוונת המחוברת לקצב הדינמי של העיר.</p>
+          <p class="project__body">פרויקט People בתל אביב הוא הרבה יותר מרק מגדל. הפרויקט הוא תפיסת עולם: חיבור בין חיים, עבודה ופנאי במרחק הליכה מהכול. כך נראית תל אביב החדשה - אנרגטית, פתוחה, קהילתית בדיוק כמו שישראל קנדה מאמינה שצריך לחיות בעיר.</p>
+        </div>
+        <div class="project__credits">
+          <article class="credit reveal-item">
+            <h3>יזמות</h3>
+            <p>ישראל קנדה</p>
+          </article>
+          <article class="credit reveal-item">
+            <h3>אדריכלות</h3>
+            <p>יסקי אדריכלים</p>
+          </article>
+          <article class="credit reveal-item">
+            <h3>מיקום</h3>
+            <p>קרימינצקי 7, תל אביב</p>
+            <span>מתחם קרמניצקי, שכונת ביצרון</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY - their published renders, as-is -->
+    <section class="lifestyle" id="gallery">
+      <div class="section-head">
+        <p class="eyebrow">גלריה</p>
+        <h2 class="section-title">מבט אל PEOPLE</h2>
+        <p class="section-sub">הדמיות הפרויקט הרשמיות, מתוך עמוד הפרויקט של ישראל קנדה</p>
+      </div>
+      <div class="gallery__grid">
+        <figure class="gcard gcard--wide tilt reveal-item">
+          <img src="media/render3.jpg" alt="שני מגדלי PEOPLE עם חזית הסריג הלבן על רקע שמי תל אביב" loading="lazy" width="1600" height="900" />
+          <figcaption>המגדלים · מתחם קרמניצקי</figcaption>
+        </figure>
+        <figure class="gcard tilt reveal-item">
+          <img src="media/render6.jpg" alt="מפלס הרחוב - מסחר, בתי קפה ואנשים למרגלות המגדלים" loading="lazy" width="1600" height="900" />
+          <figcaption>הרחוב · מסחר ותעסוקה</figcaption>
+        </figure>
+        <figure class="gcard tilt reveal-item">
+          <img src="media/render2.jpg" alt="סלון דירת יוקרה עם חלונות מקיר לקיר אל קו הרקיע" loading="lazy" width="1600" height="900" />
+          <figcaption>הדירות · דירות יוקרה</figcaption>
+        </figure>
+        <figure class="gcard tilt reveal-item">
+          <img src="media/render5.jpg" alt="חדר כושר דו-גובה עם נוף לעיר" loading="lazy" width="1600" height="900" />
+          <figcaption>חדר הכושר</figcaption>
+        </figure>
+        <figure class="gcard tilt reveal-item">
+          <img src="media/render4.jpg" alt="תקריב חזית הסריג האורגני עם מרפסות מוארות" loading="lazy" width="1600" height="900" />
+          <figcaption>הפסאדה · יסקי אדריכלים</figcaption>
+        </figure>
+        <figure class="gcard gcard--wide tilt reveal-item">
+          <img src="media/render1.jpg" alt="בריכת הגג בשעת שקיעה מול קו הרקיע של תל אביב" loading="lazy" width="1600" height="900" />
+          <figcaption>בריכת הגג · שקיעה מעל תל אביב</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact__inner">
+        <p class="eyebrow">מתעניינים?</p>
+        <h2 class="section-title">השאירו פרטים כאן ונחזור אליכם</h2>
+
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="lead-form__row">
+            <div class="field">
+              <label for="lf-name">שם מלא <span aria-hidden="true">*</span></label>
+              <input id="lf-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="lf-phone">טלפון <span aria-hidden="true">*</span></label>
+              <input id="lf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="lf-email">אימייל <span aria-hidden="true">*</span></label>
+            <input id="lf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="lf-notes">פרטים נוספים</label>
+            <textarea id="lf-notes" name="notes" rows="3"></textarea>
+          </div>
+          <button class="btn btn--book btn--lg lead-form__submit" type="submit">שליחה</button>
+          <p class="lead-form__note" id="leadFormNote" role="status" aria-live="polite" hidden></p>
+        </form>
+
+        <div class="cta__actions cta__actions--contact">
+          <a class="btn btn--ghost btn--lg" href="tel:*9098">9098* מוקד</a>
+          <a class="btn btn--ghost btn--lg" href="tel:099710900">09-9710900</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISRU CREDIT -->
+    <section class="isru" id="isru">
+      <div class="isru__inner">
+        <p class="isru__label">הדמיית קונספט</p>
+        <h2 class="isru__title">האתר הזה נבנה ע"י <strong>ISRU</strong></h2>
+        <p class="isru__name">איציק עוזיאל · בניית אתרי יוקרה קולנועיים</p>
+        <p class="isru__body">מה שגללתם עכשיו הוא הדגמה חיה: יום אחד ב-PEOPLE, מסופר בסרט רציף אחד שנע עם הגלילה - מהשמיים של תל אביב ועד בריכת הגג בשקיעה. כך יכול להיראות דף הנחיתה הבא שלכם.</p>
+        <div class="cta__actions">
+          <a class="btn btn--book btn--lg" href="https://wa.me/972527444984" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            דברו עם ISRU בוואטסאפ
+          </a>
+          <a class="btn btn--ghost btn--lg" href="mailto:info@isru.co.il">info@isru.co.il</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__brand">
+        <span class="footer__main">PEOPLE</span>
+        <span class="footer__sub">מתחם קרמניצקי · שכונת ביצרון · תל אביב</span>
+      </div>
+      <nav class="footer__links" aria-label="ניווט תחתון">
+        <a href="#top" data-link>למעלה</a>
+        <a href="#project" data-link>הפרויקט</a>
+        <a href="#gallery" data-link>גלריה</a>
+        <a href="#contact" data-link>צור קשר</a>
+      </nav>
+      <p class="footer__legal">אתר קונספט להדגמה בלבד, נבנה ע"י ISRU - איציק עוזיאל. אינו האתר הרשמי של ישראל קנדה ואינו מטעמה. הטקסטים מצוטטים מעמוד הפרויקט הפומבי; הדמיות הגלריה הן ההדמיות שפורסמו בעמוד הפרויקט; סרט הגלילה הוא פרשנות AI קונספטואלית להמחשה בלבד ואינו הדמיה רשמית של הפרויקט.</p>
+      <p class="footer__isru">ISRU · בניית אתרי יוקרה · <a href="https://wa.me/972527444984" target="_blank" rel="noopener">052-744-4984</a> · <a href="mailto:info@isru.co.il">info@isru.co.il</a></p>
+    </footer>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
