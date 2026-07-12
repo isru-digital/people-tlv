@@ -367,14 +367,23 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
    (stacked shadows receding down-right) + a top highlight edge + a soft floor
    shadow + a scarce coral glow behind the coral line. Crisp at any size, sits
    over the bright morning film with the caption dark-halo behind it. */
+/* elegant gold hairline separating the project name from the developer lockup */
+.hero-rule {
+  display: block;
+  width: clamp(48px, 7vw, 82px);
+  height: 2px;
+  margin: 1.15rem auto 1rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-2) 50%, var(--gold) 80%, transparent);
+  box-shadow: 0 0 18px rgba(217,200,168,0.45);
+}
 .dev-kicker {
   font-family: var(--body);
   font-weight: 500;
   font-size: clamp(0.82rem, 1.5vw, 1rem);
-  letter-spacing: 0.42em;
-  padding-inline-start: 0.42em;   /* optically center the tracked text */
+  letter-spacing: 0.12em;          /* Hebrew: mild tracking only, never wide */
   color: var(--ink-dim);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
   text-transform: none;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 2px 14px rgba(0,0,0,0.6);
 }
@@ -384,7 +393,7 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   align-items: center;
   gap: 0.02em;
   line-height: 0.86;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.3rem;
   font-family: "Archivo Black", var(--display);
   font-weight: 400;               /* Archivo Black ships heavy at 400 */
   letter-spacing: 0.015em;
@@ -419,12 +428,19 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
     0 -1px 0 #ffffff,
     6px 8px 14px rgba(0,0,0,0.55);
 }
-.reveal-on .dev-kicker { animation: devRise 0.7s var(--ease) both 0.25s; }
-.reveal-on .dev-logo__l1 { animation: devRise 0.85s var(--ease) both 0.38s; }
-.reveal-on .dev-logo__l2 { animation: devRise 0.85s var(--ease) both 0.52s; }
+/* entrance cascade: PEOPLE lands first, then the developer lockup rises beneath it */
+.reveal-on .hero__title { animation: devRise 0.8s var(--ease) both 0.1s; }
+.reveal-on .hero-rule   { animation: devWiden 0.6s var(--ease) both 0.44s; }
+.reveal-on .dev-kicker  { animation: devRise 0.7s var(--ease) both 0.52s; }
+.reveal-on .dev-logo__l1 { animation: devRise 0.85s var(--ease) both 0.62s; }
+.reveal-on .dev-logo__l2 { animation: devRise 0.85s var(--ease) both 0.74s; }
 @keyframes devRise {
   from { opacity: 0; transform: translateY(26px) scale(0.94); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes devWiden {
+  from { opacity: 0; transform: scaleX(0.3); }
+  to   { opacity: 1; transform: scaleX(1); }
 }
 
 .hero__title {
@@ -923,8 +939,9 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 
 @media (orientation: landscape) and (max-height: 600px) {
   .dev-logo span { font-size: clamp(1.6rem, 9.5vh, 3.4rem); }
-  .dev-logo { margin-bottom: 0.7rem; }
-  .dev-kicker { margin-bottom: 0.4rem; font-size: 0.8rem; }
+  .dev-logo { margin-bottom: 0.6rem; }
+  .dev-kicker { margin-bottom: 0.3rem; font-size: 0.8rem; }
+  .hero-rule { margin: 0.6rem auto 0.5rem; }
   .hero__title { font-size: clamp(2.4rem, 14vh, 5.2rem); }
   .scene__title { font-size: clamp(1.9rem, 9.5vh, 3.8rem); }
   .scene__title--xl { font-size: clamp(2.4rem, 13vh, 5.2rem); }
