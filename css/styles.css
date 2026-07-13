@@ -963,6 +963,14 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   .concept-ribbon__by { display: none; } /* keep it compact on phones; full credit lives in the footer */
 }
 
+/* film-caption line breaks: desktop keeps each line as-is; phones get controlled
+   breaks at semantic points so captions never run too long over the video */
+.br-m { display: none; }
+@media (max-width: 640px) {
+  .br-m { display: inline; }
+  .sep-m { display: none; }
+}
+
 /* portrait phones: give captions the whole width and bump every level so the
    film's text is comfortably legible on a small screen */
 @media (max-width: 600px) and (orientation: portrait) {
