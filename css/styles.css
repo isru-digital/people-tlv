@@ -298,7 +298,7 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 .btn:active { transform: scale(0.97); }
 
 /* ---------- the film ---------- */
-.film { position: relative; height: 1170vh; background: #000; } /* 8 scenes, balcony+pool lengthened - scroll scales with film time */
+.film { position: relative; height: 1340vh; background: #000; } /* scroll scales with film time; pool (scene 8) doubled + ending x1.5 for extra dwell */
 .film__stage {
   position: sticky;
   top: 0;

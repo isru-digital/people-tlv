@@ -21,7 +21,7 @@
   /* per-caption-band durations (seconds) - MUST match the real film; verified with ffprobe.
      9 caption scenes over a 10-clip film: the lobby band spans TWO clips
      (clip3 entry 5s + clip3b marble-lobby dwell 6s = 11.083334s). */
-  var DUR = [8.041667, 5.041667, 11.083334, 5.041667, 5.041667, 7.041667, 6.041667, 6.041667, 5.041667]; /* ffprobe-verified */
+  var DUR = [8.041667, 5.041667, 11.083334, 5.041667, 5.041667, 7.041667, 6.041667, 12.041667, 7.541667]; /* ffprobe-verified; pool (8) doubled + ending (9) x1.5 for dwell */
   var TOTAL = DUR.reduce(function (a, b) { return a + b; }, 0);
   var bands = (function () {
     var out = [], acc = 0;
