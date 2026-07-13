@@ -29,7 +29,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ---------- cinematic overlays (grain + vignette), tie the page to the film ---------- */
+/* ---------- cinematic overlays (grain + vignette), tie the page to the film ----------
+   Both are static fixed layers with NO mix-blend-mode: a full-screen fixed element
+   with mix-blend-mode forces the compositor to re-blend the whole viewport on every
+   scroll/seek frame - a major jank source over the scrubbing film. Plain alpha layers
+   composite once and stay put. Grain is disabled on phones (perf > texture there). */
 .grain, .vignette { position: fixed; inset: 0; pointer-events: none; }
 .vignette {
   z-index: 90;
@@ -37,10 +41,12 @@
 }
 .grain {
   z-index: 91;
-  opacity: 0.055;
-  mix-blend-mode: overlay;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 140px 140px;
+}
+@media (max-width: 820px) {
+  .grain { display: none; }
 }
 
 html {
