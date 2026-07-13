@@ -402,49 +402,49 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   text-transform: none;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 2px 14px rgba(0,0,0,0.6);
 }
-/* developer brand plate: their EXACT ISRAEL CANADA logo, presented on a lit
-   off-white plate (so the black wordmark reads over the film) with a real 3D
-   card thickness (stepped edge) + ambient shadow + interactive pointer tilt. */
-.brandplate-wrap {
+/* developer wordmark: their EXACT ISRAEL CANADA logo, background removed, floating
+   over the film with only a soft drop-shadow for depth + interactive pointer tilt.
+   The hero scrim is top-weighted (see below) so the black wordmark reads over the
+   bright city while PEOPLE keeps its dark backing above. */
+.brandmark-wrap {
   perspective: 950px;
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
-.brandplate {
-  position: relative;
-  display: inline-flex;
-  padding: clamp(15px, 2.3vw, 22px) clamp(28px, 4.6vw, 46px);
-  border-radius: 14px;
-  background: linear-gradient(157deg, #f6f4ef 0%, #eeece3 52%, #e5e3d8 100%);
-  border: 1px solid rgba(255,255,255,0.6);
+.brandmark {
+  display: inline-block;
   transform-style: preserve-3d;
   will-change: transform;
-  box-shadow:
-    0 1px 0 #dedcd2, 0 2px 0 #d6d4ca, 0 3px 0 #cdcbc1,
-    0 4px 0 #c4c2b8, 0 5px 0 #bbb9af,          /* stepped card thickness */
-    0 9px 8px rgba(0,0,0,0.22),                 /* contact shadow */
-    0 28px 56px rgba(0,0,0,0.5);                /* ambient float */
 }
-.brandplate::after {                            /* soft top gloss for the lit look */
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0) 44%);
-  opacity: 0.5;
-}
-.brandplate img {
+.brandmark img {
   display: block;
-  width: clamp(180px, 26vw, 272px);
+  width: clamp(200px, 30vw, 320px);
   height: auto;
+  filter:
+    drop-shadow(0 2px 3px rgba(0,0,0,0.4))
+    drop-shadow(0 10px 22px rgba(0,0,0,0.48));
 }
-/* entrance cascade: PEOPLE lands first, then the developer plate rises beneath it */
+/* hero scrim: dark behind PEOPLE (top), clears behind the wordmark (mid), a little
+   dark again for the tagline/CTA (bottom) - lets the dark logo read bg-less */
+.cap[data-scene="0"] .cap__text::before {
+  background: linear-gradient(180deg,
+    rgba(6,8,12,0.74) 0%,
+    rgba(6,8,12,0.44) 19%,
+    rgba(6,8,12,0.10) 37%,
+    rgba(6,8,12,0.06) 57%,
+    rgba(6,8,12,0.36) 100%);
+  filter: blur(14px);
+}
+/* small light kicker sits in the clear zone, so give it a robust shadow */
+.cap[data-scene="0"] .dev-kicker {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.7), 0 0 4px rgba(0,0,0,0.6);
+}
+/* entrance cascade: PEOPLE lands first, then the developer lockup rises beneath it */
 .reveal-on .hero__title    { animation: devRise 0.8s var(--ease) both 0.1s; }
 .reveal-on .hero-rule      { animation: devWiden 0.6s var(--ease) both 0.44s; }
 .reveal-on .dev-kicker     { animation: devRise 0.7s var(--ease) both 0.52s; }
-.reveal-on .brandplate-wrap { animation: devRise 0.9s var(--ease) both 0.62s; }
+.reveal-on .brandmark-wrap { animation: devRise 0.9s var(--ease) both 0.62s; }
 @keyframes devRise {
   from { opacity: 0; transform: translateY(26px) scale(0.94); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -941,8 +941,8 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
   .cap--center .cap__text { max-width: 100%; }
   .cap__text::before { inset: -26px -26px; }
   .eyebrow { font-size: 1.05rem; letter-spacing: 0.1em; margin-bottom: 0.9rem; }
-  .brandplate img { width: clamp(160px, 52vw, 230px); }
-  .brandplate-wrap { margin-bottom: 1.1rem; }
+  .brandmark img { width: clamp(180px, 58vw, 260px); }
+  .brandmark-wrap { margin-bottom: 1.1rem; }
   .dev-kicker { margin-bottom: 0.6rem; }
   .hero__title { font-size: clamp(2.7rem, 13vw, 4rem); }
   .hero__script { font-size: clamp(1.5rem, 6vw, 1.9rem); }
@@ -953,9 +953,8 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
 }
 
 @media (orientation: landscape) and (max-height: 600px) {
-  .brandplate img { width: clamp(150px, 24vh, 220px); }
-  .brandplate-wrap { margin-bottom: 0.6rem; }
-  .brandplate { padding: 12px 30px; }
+  .brandmark img { width: clamp(170px, 30vh, 250px); }
+  .brandmark-wrap { margin-bottom: 0.6rem; }
   .dev-kicker { margin-bottom: 0.3rem; font-size: 0.8rem; }
   .hero-rule { margin: 0.6rem auto 0.5rem; }
   .hero__title { font-size: clamp(2.1rem, 11vh, 4.2rem); }
