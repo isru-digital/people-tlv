@@ -407,23 +407,53 @@ html.js .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none
    The hero scrim is top-weighted (see below) so the black wordmark reads over the
    bright city while PEOPLE keeps its dark backing above. */
 .brandmark-wrap {
+  position: relative;
   perspective: 950px;
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  align-items: flex-end;
+  margin-bottom: 1.6rem;
 }
 .brandmark {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   transform-style: preserve-3d;
   will-change: transform;
+  animation: float3d 6.5s ease-in-out infinite;
 }
 .brandmark img {
   display: block;
   width: clamp(200px, 30vw, 320px);
   height: auto;
-  filter:
-    drop-shadow(0 2px 3px rgba(0,0,0,0.4))
-    drop-shadow(0 10px 22px rgba(0,0,0,0.48));
+  filter: drop-shadow(0 6px 9px rgba(0,0,0,0.42));
+}
+/* grounded cast shadow: stays put while the wordmark bobs, shrinking as it rises
+   - the illusion that the logo is flying above the scene */
+.brandmark__shadow {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: -22px;
+  width: 62%;
+  height: 18px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(0,0,0,0.5), transparent 76%);
+  filter: blur(7px);
+  animation: floatShadow 6.5s ease-in-out infinite;
+}
+@keyframes float3d {
+  0%   { transform: translateY(0)     rotateX(7deg) rotateY(-5deg) rotateZ(-0.4deg); }
+  50%  { transform: translateY(-14px) rotateX(3deg) rotateY(5deg)  rotateZ(0.4deg); }
+  100% { transform: translateY(0)     rotateX(7deg) rotateY(-5deg) rotateZ(-0.4deg); }
+}
+@keyframes floatShadow {
+  0%, 100% { transform: translateX(-50%) scale(1);    opacity: 0.5; }
+  50%      { transform: translateX(-50%) scale(0.8);  opacity: 0.28; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brandmark { animation: none; transform: rotateX(5deg) rotateY(-3deg); }
+  .brandmark__shadow { animation: none; }
 }
 /* hero scrim: dark behind PEOPLE (top), clears behind the wordmark (mid), a little
    dark again for the tagline/CTA (bottom) - lets the dark logo read bg-less */
